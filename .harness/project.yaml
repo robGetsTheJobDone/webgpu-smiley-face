@@ -1,10 +1,45 @@
-name: webgpu-smiley-face
-commands:
-  setup: pnpm install --frozen-lockfile
-  test: pnpm test
-  lint: pnpm lint
-  build: pnpm build
-acceptance:
-  - tests_pass
-  - lint_pass
-  - build_pass
+{
+  "schemaVersion": 1,
+  "project": { "name": "webgpu-smiley-face", "goal": "Web GPU draws a smelly face" },
+  "environment": {
+    "type": "oci",
+    "build": {
+      "context": ".",
+      "dockerfile": ".devcontainer/Dockerfile",
+      "buildArgs": {},
+      "baseImageDigests": ["sha256:dd9d21971ec4395903fa6143c2b9267d048ae01ca6d3ea96f16cb30df6187d94"]
+    },
+    "image": {
+      "reference": "docker.io/library/node:22.22.0-bookworm-slim",
+      "digest": "sha256:dd9d21971ec4395903fa6143c2b9267d048ae01ca6d3ea96f16cb30df6187d94",
+      "platform": { "os": "linux", "architecture": "amd64" }
+    },
+    "devcontainerPath": ".devcontainer/devcontainer.json",
+    "workingDirectory": "/workspaces/project",
+    "supportedPlatforms": [
+      { "os": "linux", "architecture": "amd64" },
+      { "os": "linux", "architecture": "arm64" }
+    ],
+    "hardware": { "gpu": "none" }
+  },
+  "commands": {
+    "setup": { "run": "corepack pnpm install --frozen-lockfile", "timeoutSeconds": 900, "environment": {} },
+    "test": { "run": "corepack pnpm test", "timeoutSeconds": 900, "environment": {} },
+    "lint": { "run": "corepack pnpm lint", "timeoutSeconds": 900, "environment": {} },
+    "typecheck": { "run": "corepack pnpm typecheck", "timeoutSeconds": 900, "environment": {} },
+    "build": { "run": "corepack pnpm build", "timeoutSeconds": 900, "environment": {} }
+  },
+  "services": [],
+  "artifacts": [],
+  "acceptance": {
+    "checks": [
+      { "id": "tests", "command": "test", "required": true },
+      { "id": "lint", "command": "lint", "required": true },
+      { "id": "typecheck", "command": "typecheck", "required": true },
+      { "id": "build", "command": "build", "required": true }
+    ]
+  },
+  "handoff": {
+    "requiredSections": ["summary", "completed_work", "next_actions", "blockers", "verification_status"]
+  }
+}
