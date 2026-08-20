@@ -3,6 +3,7 @@
   "dockerComposeFile": "../compose.yaml",
   "service": "workspace",
   "workspaceFolder": "/workspaces/project",
+  "forwardPorts": [5173],
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
