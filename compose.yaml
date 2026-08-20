@@ -1,0 +1,15 @@
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    command: sleep infinity
+    volumes:
+      - .:/workspaces/project:cached
+    depends_on:
+      postgres:
+        condition: service_started
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres

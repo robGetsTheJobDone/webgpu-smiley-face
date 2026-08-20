@@ -1,0 +1,12 @@
+{
+  "name": "webgpu-smiley-face",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/project",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}

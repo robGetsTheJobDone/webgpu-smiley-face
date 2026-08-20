@@ -1,0 +1,10 @@
+name: webgpu-smiley-face
+commands:
+  setup: pnpm install --frozen-lockfile
+  test: pnpm test
+  lint: pnpm lint
+  build: pnpm build
+acceptance:
+  - tests_pass
+  - lint_pass
+  - build_pass
