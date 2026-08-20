@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff7df" />
+    <meta name="description" content="A friendly, readable WebGPU smiley face." />
+    <title>WebGPU Smiley</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <p class="eyebrow">A tiny WebGPU hello</p>
+      <h1>GPU-powered joy.</h1>
+      <p class="intro">One friendly face, drawn from triangles by your graphics card.</p>
+      <section class="stage" aria-labelledby="renderer-title">
+        <h2 id="renderer-title" class="sr-only">WebGPU smiley renderer</h2>
+        <canvas id="smiley" aria-label="A yellow smiley face rendered with WebGPU"></canvas>
+        <div id="status" class="status" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Warming up the pixels…</span>
+        </div>
+        <div id="compatibility" class="compatibility" role="alert" hidden>
+          <span class="compatibility-face" aria-hidden="true">:)</span>
+          <h2>This browser needs WebGPU</h2>
+          <p>Try the latest Chrome, Edge, Firefox, or Safari with hardware acceleration enabled.</p>
+          <a href="https://caniuse.com/webgpu" target="_blank" rel="noreferrer">Check browser support <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <p class="footer-note"><span aria-hidden="true">●</span> No server. No tracking. Just triangles.</p>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
